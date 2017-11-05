@@ -1,0 +1,44 @@
+CODEBOOK
+
+Getting and cleaning data - Week4_final project
+Assignment:
+You should create one R script called run_analysis.R that does the following. 
+
+1.	Merges the training and the test sets to create one data set. See object: “test_train_set”.
+2.	Extracts only the measurements on the mean and standard deviation for each measurement. See object: “test_train_mean_std”
+3.	Uses descriptive activity names to name the activities in the data set. See object: “test_train_set”.
+4.	Appropriately labels the data set with descriptive variable names. See object: “test_train_set”.
+5.	From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject. See object: “Average_test_train”
+
+The steps followed to address this assignment are explained in the attached README file.
+Variables and objects used or generated in the R script, as well as output file, are specified below:
+
+VARIABLES
+subject: id obtained from subject_test and subject_train
+activity: activity numbers obtained from y_test and y_train and transformed to names as coded in “activity_labels” table.
+“Mean_ …”: 66 variables in  Average_test_train (after subject and activity): created to indicare the average of each variable for each activity and each subject from “test_train_mean_std”
+561 variable names in the x_test and x_train data sets are obtained from the data frame “features”
+dataSet: in test_train_set , belongs to “test” or “train” data sets.
+.
+OBJECTS:
+fileUrl: "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+features: read.table("./data/UCI HAR Dataset/features.txt"): variable names for x_test and x_train
+activity_labels: read.table("./data/UCI HAR Dataset/activity_labels.txt")
+x_test: read.table("./data/UCI HAR Dataset/test/X_test.txt")
+subject_test: read.table("./data/UCI HAR Dataset/test/subject_test.txt", col.names = "subject")
+test_labels: read.table("./data/UCI HAR Dataset/test/y_test.txt",col.names = "activity")
+x_train: read.table("./data/UCI HAR Dataset/train/X_train.txt")
+subject_train: read.table("./data/UCI HAR Dataset/train/subject_train.txt", col.names = "subject")
+train_labels: read.table("./data/UCI HAR Dataset/train/y_train.txt",col.names = "activity")
+test_labelswnames: vector with descriptive activity labels for x_test data set.
+train_labelswnames: vector with descriptive activity labels for x_train data set.
+testDataSet: assembled data frame with “subject” column,”activity” column and all the variables specified in “features” with their values for x_test
+trainDataSet: assembled data frame with “subject” column,”activity” column and all the variables specified in “features” with their values for x_train
+test_train_set <- merged from “testDataSet” and “trainDataSet”
+test_train_mean_std: subject,activity,dataSet,contains("mean()"),contains("std()")): Extract only the measurements on the mean and standard deviation for each measurement (Requirement 2 assignment)
+Average_test_train: independent tidy data set with the average of each variable for each activity and each subject (Requirement 5).
+
+OUTPUT
+“Average_test_train.txt” file is generated in the working directory.
+
+
